@@ -5,40 +5,33 @@
 #covid cases per age (scatter plot)
 #stream plot for spread
 #multiplot for showing spread per day . cases/pop
+import matplotlib.pyplot as plt
 import csv
-from mpl_toolkits.mplot3d import axes3d 
-from matplotlib import pyplot 
-
-def csvlist(reading):
-      l=[]
-      for i in reading:
-            if i !=[]:
-                  l.append(l)
-      return l
-with open('Population.csv','r') as f2:
-      reading2=csv.reader(f2)
-      pop=csvlist(reading2) # [x,y,pop]
-      
-from mpl_toolkits.mplot3d import axes3d 
-from matplotlib import pyplot  
-##import numpy as geek 
-##  
-##arr = geek.array([1, 2, 3, 4]) 
-##  
-##gfg = arr.ndim 
-#got ndim errors while trying to execute with population.csv
-print (gfg)
-# creating the visualiztion 
-fig = pyplot.figure() 
-wf = fig.add_subplot(111, projection='3d') 
-x, y, z = geek.(array[[1,2,3],[3,4,5],[4,5,6]])
-wf.plot_wireframe(x,y,z, rstride=2,  
-                  cstride=2,color='green') 
-   
-# displaying the visualization 
+from mpl_toolkits.mplot3d import Axes3D
+fig = plt.figure()
+ax = fig.add_subplot(111, projection='3d')
+with open('Population2.csv', 'r') as f:
+      obj = csv.reader(f)
+      rl=[]
+      for i in obj:
+            if i!=['','','']:
+                  rl.append(i)
+      X, Y, Z = [], [], []
+      for i,row in enumerate(rl):
+            xstring = row[0]
+            ystring = row[1]
+            zstring= row[2]
+            xdata = float(int(xstring))
+            ydata = float(int(ystring))
+            zdata = float(int(zstring))
+            X.append(xdata)
+            Y.append(ydata)
+            Z.append(zdata)
+ax.scatter3D(X,Y,Z)
 wf.set_title('Example 1') 
-pyplot.show() 
- 
+plt.show()
+#change scatter3d to somethinelse like wf
+#removed heade
 
       
       
